@@ -1,2 +1,2 @@
-# lyricist
+# lyrAssist
 DigitalCrafts Group Project
