@@ -7,6 +7,7 @@ body {
   font-weight: bold;
   padding-top: 50px;
   padding-bottom: 70px;
+  font-size: 7.0em;
 }
 
 .header p {
@@ -20,4 +21,17 @@ body {
 .navbar-inverse {
    background-color: black;
    color: white;
+}
+
+.jumbotron {
+  background-image: url("img/record.jpg");
+  width: 100%;
+  padding-bottom: 200px;
+  padding-top: 50px;
+  height: 85%;
+
+}
+
+#search-form {
+  padding-top: 10px;
 }
