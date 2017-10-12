@@ -1,0 +1,23 @@
+body {
+  background-color: #ce42f4;
+}
+
+.header h2 {
+  color: #424ef4;
+  font-weight: bold;
+  padding-top: 50px;
+  padding-bottom: 70px;
+}
+
+.header p {
+  color: #50524F;
+  padding-bottom: 40px;
+  font-size: 1.9em;
+  font-weight: bold;
+  font-style: oblique;
+}
+
+.navbar-inverse {
+   background-color: black;
+   color: white;
+}
