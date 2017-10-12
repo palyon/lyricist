@@ -1,0 +1,37 @@
+body {
+  background-color: #2CA1BF;
+}
+
+.header h2 {
+  color: #424ef4;
+  font-weight: bold;
+  padding-top: 50px;
+  padding-bottom: 70px;
+  font-size: 7.0em;
+}
+
+.header p {
+  color: #50524F;
+  padding-bottom: 40px;
+  font-size: 1.9em;
+  font-weight: bold;
+  font-style: oblique;
+}
+
+.navbar-inverse {
+   background-color: black;
+   color: white;
+}
+
+.jumbotron {
+  background-image: url("img/record.jpg");
+  width: 100%;
+  padding-bottom: 200px;
+  padding-top: 50px;
+  height: 85%;
+
+}
+
+#search-form {
+  padding-top: 10px;
+}
