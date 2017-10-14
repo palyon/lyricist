@@ -1,6 +1,18 @@
 body {
   background-color: #2CA1BF;
+  font-family: 'Kaushan Script', cursive;
+
 }
+
+.title {
+  margin-bottom: 80px;
+  margin-top: 40px;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 100px;
+  letter-spacing: 10px;
+
+}
+
 
 /*.header h2 {
   color: #424ef4;
@@ -19,17 +31,12 @@ body {
   padding-bottom: 10px;
 }
 
-.navbar-inverse {
-   background-color: black;
-   color: white;
-}
-
 .jumbotron {
   background-image: url("img/record.jpg");
   background-size: cover;
   width: 100%;
   padding-bottom: 270px;
-  padding-top: 50px;
+  padding-top: 20px;
   height: 85%;
 }
 
@@ -37,5 +44,13 @@ body {
   padding-top: 10px;
   padding-left: 230px;
   margin-bottom: 40px;
+}
+
+.card, {
+  font-size: 25px;
+}
+
+.get-lyrics {
+  font-size: 18px;
 }
 
