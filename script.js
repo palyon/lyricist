@@ -1,8 +1,8 @@
 $(function(){
-	$("form").submit(function(e){
+	$("#search-form").submit(function(e){
 		e.preventDefault();
 
-		var songSearch = $(".title-search").val();
+		var songSearch = $(".search-bar").val();
 
 		$.ajax({
 		    type: "GET",
@@ -19,12 +19,24 @@ $(function(){
 		    contentType: 'application/json',
 		    success: function(data) {
 		        console.log(data); 
+		        
+		        var results = data.message.body.track_list;
+		        	results.forEach(function(track_list){
+		        		var artist = track_list.track.artist_name;
+		        		var song = track_list.track.track_name;
+		        		var trackId = track_list.track.track_id;
+		        		console.log(artist, song, trackId);
+		        	})
+
+
+		       
 		    },
 		    error: function(jqXHR, textStatus, errorThrown) {
 		        console.log(jqXHR);
 		        console.log(textStatus);
 		        console.log(errorThrown);
-		    }    
+		    }  
+
 		 });
 
 	})
