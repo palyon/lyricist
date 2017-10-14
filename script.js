@@ -1,4 +1,36 @@
 $(function(){
+
+	function renderSongs(songs) {
+
+		$(".card-columns").empty();
+
+		songs.forEach(function(song){
+			console.log(song.track.track_name);
+
+
+			var newDiv = $('<div class="card"></div>');
+			var cardImg = $('<img class="card-img-top" src="img/song-pic.jpg">');
+			var newCardBody = $('<div class="card-body"></div>');
+			var newSongTitle = $('<h4 class="card-title"></h4>');
+			var newArtist = $('<p class="card-text"></p>');
+			var newButton = $('<button type="button" class="btn btn-info btn-sm"> View Lyrics</button>');
+
+
+
+			newSongTitle.text(song.track.track_name);
+			newArtist.text(song.track.artist_name);
+
+
+			newCardBody.append(newSongTitle, newArtist, newButton);
+			newDiv.append(cardImg, newCardBody);
+
+			$(".card-columns").append(newDiv);
+
+		})
+	}
+
+
+	// listener for search function
 	$("#search-form").submit(function(e){
 		e.preventDefault();
 
@@ -21,12 +53,13 @@ $(function(){
 		        console.log(data); 
 		        
 		        var results = data.message.body.track_list;
-		        	results.forEach(function(track_list){
-		        		var artist = track_list.track.artist_name;
-		        		var song = track_list.track.track_name;
-		        		var trackId = track_list.track.track_id;
-		        		console.log(artist, song, trackId);
-		        	})
+		        renderSongs(results);
+		        	// results.forEach(function(track_list){
+		        	// 	var artist = track_list.track.artist_name;
+		        	// 	var song = track_list.track.track_name;
+		        	// 	var trackId = track_list.track.track_id;
+		        	// 	// console.log(artist, song, trackId);
+		        	// })
 
 
 		       
