@@ -5,7 +5,7 @@ $(function(){
 		$(".card-columns").empty();
 
 		songs.forEach(function(song){
-			console.log(song.track.track_name);
+			// console.log(song.track.track_name);
 
 
 			var newDiv = $('<div class="card"></div>');
@@ -13,16 +13,17 @@ $(function(){
 			var newCardBody = $('<div class="card-body"></div>');
 			var newSongTitle = $('<h4 class="card-title"></h4>');
 			var newArtist = $('<p class="card-text"></p>');
-			var newButton = $('<button type="button" class="btn btn-info btn-sm"> View Lyrics</button>');
+			var newButton = $('<button type="button" class="btn btn-info btn-sm get-lyrics"> View Lyrics</button>');
 
 
 
 			newSongTitle.text(song.track.track_name);
 			newArtist.text(song.track.artist_name);
+			newButton.val(song.track.track_id);
 
 
 			newCardBody.append(newSongTitle, newArtist, newButton);
-			newDiv.append(cardImg, newCardBody);
+			newDiv.append(cardImg,newCardBody);
 
 			$(".card-columns").append(newDiv);
 
