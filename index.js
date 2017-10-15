@@ -12,20 +12,32 @@ $(function(){
 			var newCardBody = $('<div class="card-body"></div>');
 			var newSongTitle = $('<h4 class="card-title"></h4>');
 			var newArtist = $('<p class="card-text"></p>');
-			var newButton = $('<button type="button" class="btn btn-info btn-sm get-lyrics"> View Lyrics</button>');
+			var newButton = $('<button type="button" class="btn btn-info btn-sm get-lyrics" data-toggle="modal" data-target=".lyricContent"> View Lyrics</button>');
+			var newModalContent =$('<div class="modal fade lyricContent" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">' +
+				'<div class="modal-dialog modal-lg">' +
+					'<div class="modal-content">' +
+							'<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+								'<span aria-hidden="true">&times;</span>' +
+							'</button>' +
+						'<div class="modal-body">' +
+							'<p class="songLyricsHere"></p>' +
+						'</div>' +
+					'</div>' +
+				'</div>' +
+			'</div>');
+
 
 			newSongTitle.text(song.track.track_name);
 			newArtist.text(song.track.artist_name);
 			newButton.val(song.track.track_id);
 			console.log(newButton.val())
 
-			newCardBody.append(newSongTitle, newArtist, newButton);
+			newCardBody.append(newSongTitle, newArtist, newButton, newModalContent);
 			newDiv.append(cardImg,newCardBody);
 
 			$(".card-columns").append(newDiv);
 
 		 });
-
 		$('.get-lyrics').on('click', function(e){
 			e.preventDefault();
 
@@ -46,7 +58,9 @@ $(function(){
 			    contentType: 'application/json',
 			    success: function(data) {
 			        console.log(data);
-
+							var results = data.message.body.lyrics.lyrics_body;
+							console.log(results);
+							$('.songLyricsHere').append(results);
 			    },
 			    error: function(jqXHR, textStatus, errorThrown) {
 			        console.log(jqXHR);
@@ -56,7 +70,6 @@ $(function(){
 			 });
 			})
 	}
-
 
 	// listener for search function
 	$("#search-form").submit(function(e){
@@ -82,14 +95,6 @@ $(function(){
 
 		        var results = data.message.body.track_list;
 		        renderSongs(results);
-		        	// results.forEach(function(track_list){
-		        	// 	var artist = track_list.track.artist_name;
-		        	// 	var song = track_list.track.track_name;
-		        	// 	var trackId = track_list.track.track_id;
-		        	// 	// console.log(artist, song, trackId);
-		        	// })
-
-
 
 		    },
 		    error: function(jqXHR, textStatus, errorThrown) {
@@ -99,6 +104,49 @@ $(function(){
 		    }
 
 		 });
-
 	})
+
+	// '<div class="modal fade lyricContent" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">' +
+	// 	'<div class="modal-dialog modal-lg">' +
+	// 		'<div class="modal-content">' +
+	// 			'<div class="modal-header">' +
+	// 			  '<h5 class="modal-title">TrackName // ArtistName</h5>' +
+	// 				'<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+	// 					'<span aria-hidden="true">&times;</span>' +
+	// 				'</button>' +
+	// 			'</div>' +
+	// 			'<div class="modal-body">' +
+	// 				'<p>Song Lyrics Go Here</p>' +
+	// 			'</div>' +
+	// 		'</div>' +
+	// 	'</div>' +
+	// '</div>'
+	//
+	// <div class="modal fade lyricContent" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	// 	<div class="modal-dialog modal-lg">
+	// 		<div class="modal-content">
+	// 			<div class="modal-header">
+	// 				<h5 class="modal-title">TrackName // ArtistName</h5>
+	// 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	// 					<span aria-hidden="true">&times;</span>
+	// 				</button>
+	// 			</div>
+	// 			<div class="modal-body">
+	// 				<p>Song Lyrics Go Here</p>
+	// 			</div>
+	// 		</div>
+	// 	</div>
+	// </div>
+
+
+
+
+
+
+
+
+
+
+
+
 })
