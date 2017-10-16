@@ -9,33 +9,35 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
-    <script type="text/javascript" src="granim.js"></script>
-
-    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,600" rel="stylesheet">
+    <script type="text/javascript" src="granim.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
     <script type="text/javascript" src="script.js"></script>
   </head>
 
   <body>
 
-    <div class="jumbotron">
-        <div class="col-12 header text-center">
-          <h2 class="display-1 title">LyrAssist</h2>
-        </div>
-    </div>
+    <canvas id="canvas-image"></canvas>
 
-    <div class="col-12 header text-center">
-      <p>Find the lyrics to a song</p>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="lyrassist text-center">LyrAssist</h1>
+      </div>
     </div>
 
     <div class="container">
+      <div class="col-12 header text-center">
+        <p>Find the lyrics to your favorite song</p>
+      </div>
+
 
       <div class="row">
-        <div class="col-10 search">
+        <div class="col-12 search">
           <form id="search-form">
             <div class="input-group input-group-lg">
-              <input class="form-control search-bar" placeholder="Search by song title ...">
+              <input type="text" class="form-control search-bar" placeholder="Search by song title ...">
               <span class="input-group-btn">
-              <button class="btn btn-primary" type="submit">Search</button>
+                <button class="btn btn-primary" type="submit">Search</button>
               </span>
             </div>
           </form>
