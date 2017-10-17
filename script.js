@@ -1,11 +1,15 @@
 $(function(){
 
+	$(".lyricContent").on("hidden.bs.modal", function(){
+		$(".songLyricsHere").empty();
+	})
 
 	function renderSongs(songs) {
 
 		$(".card-columns").empty();
 
 		songs.forEach(function(song){
+
 
 			// generate HTML and dipslay new cards on the screen
 
@@ -15,18 +19,6 @@ $(function(){
 			var newSongTitle = $('<h4 class="card-title"></h4>');
 			var newArtist = $('<p class="card-text"></p>');
 			var newButton = $('<button type="button" class="btn btn-info btn-sm get-lyrics" data-toggle="modal" data-target=".lyricContent"> View Lyrics</button>');
-			var newModalContent =$('<div class="modal fade lyricContent" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">' +
-				'<div class="modal-dialog modal-lg">' +
-					'<div class="modal-content">' +
-							'<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
-								'<span aria-hidden="true">&times;</span>' +
-							'</button>' +
-						'<div class="modal-body">' +
-							'<p class="songLyricsHere"></p>' +
-						'</div>' +
-					'</div>' +
-				'</div>' +
-			'</div>');
 
 
 			newSongTitle.text(song.track.track_name);
@@ -34,18 +26,18 @@ $(function(){
 			newButton.val(song.track.track_id);
 			console.log(newButton.val());
 
-			newCardBody.append(newSongTitle, newArtist, newButton, newModalContent);
+			newCardBody.append(newSongTitle, newArtist, newButton);
 			newDiv.append(cardImg,newCardBody);
 
 			$(".card-columns").append(newDiv);
 
 		});
+	}
 
-
-	$(".get-lyrics").on("click", function(e){
+	$(".card-columns").on("click", ".get-lyrics", function(e){
 		e.preventDefault();
 
-		var buttonValue = $(".get-lyrics").val();
+		var buttonValue = $(this).val();
 
 		$.ajax({
 		    type: "GET",
@@ -64,7 +56,7 @@ $(function(){
 		        console.log(data);
 		        		var results = data.message.body.lyrics.lyrics_body;
 		        		console.log(results);
-		        		$(".songLyricsHere").append(results);
+		        		$(".songLyricsHere").html(results);
 
 		    },
 		    error: function(jqXHR, textStatus, errorThrown) {
@@ -74,8 +66,8 @@ $(function(){
 		    }
 		 });
 		})
-	}
 
+	
 	// listener for search function
 
 	$("#search-form").submit(function(e){
@@ -101,12 +93,7 @@ $(function(){
 		        
 		        var results = data.message.body.track_list;
 		        renderSongs(results);
-		        	// results.forEach(function(track_list){
-		        	// 	var artist = track_list.track.artist_name;
-		        	// 	var song = track_list.track.track_name;
-		        	// 	var trackId = track_list.track.track_id;
-		        	// 	// console.log(artist, song, trackId);
-		        	// })
+		        	
 		       
 		    },
 		    error: function(jqXHR, textStatus, errorThrown) {
@@ -118,7 +105,6 @@ $(function(){
 		 });
 
 	})
-
 
 	var granimInstance = new Granim({
     element: '#canvas-image',
@@ -136,4 +122,3 @@ $(function(){
     }
 	})
 })
-
